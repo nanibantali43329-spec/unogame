@@ -1,21 +1,32 @@
 .game-board {
   width: 100vw;
   height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: grid;
+  grid-template-areas:
+    "top-info top-info top-info"
+    "left-player top-player right-player"
+    "left-player center right-player"
+    "my-hand my-hand my-hand";
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto 1fr 2fr auto;
   position: relative;
   overflow: hidden;
+  font-family: 'Rubik', sans-serif;
 }
 
 .game-info {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  grid-area: top-info;
+  align-self: start;
+  justify-self: center;
   background: rgba(255, 255, 255, 0.95);
   padding: 15px 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  z-index: 10;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 100;
   min-width: 300px;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .game-message {
@@ -44,41 +55,40 @@
 }
 
 .player-area {
-  position: absolute;
   background: rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
   padding: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
+  z-index: 10;
 }
 
 .player-area.current-player {
-  border: 3px solid #f39c12;
-  box-shadow: 0 0 20px rgba(243, 156, 18, 0.6);
-}
-
-.player-area.bottom {
-  bottom: 200px;
-  left: 50%;
-  transform: translateX(-50%);
+  box-shadow: 0 0 20px rgba(46, 204, 113, 0.8);
+  border: 3px solid #2ecc71;
 }
 
 .player-area.top {
-  top: 120px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.player-area.left {
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
+  grid-area: top-player;
+  align-self: start;
+  justify-self: center;
+  margin-top: 20px;
 }
 
 .player-area.right {
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
+  grid-area: right-player;
+  align-self: center;
+  justify-self: center;
+}
+
+.player-area.bottom {
+  display: none;
+}
+
+.player-area.left {
+  grid-area: left-player;
+  align-self: center;
+  justify-self: center;
 }
 
 .player-info {
@@ -114,13 +124,13 @@
 }
 
 .center-area {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  grid-area: center;
+  align-self: center;
+  justify-self: center;
   display: flex;
   align-items: center;
   gap: 30px;
+  z-index: 5;
 }
 
 .discard-pile {
@@ -153,21 +163,21 @@
 }
 
 .my-hand {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+  grid-area: my-hand;
+  align-self: end;
+  justify-self: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   max-width: 90vw;
-  transition: all 0.3s ease;
+  margin-bottom: 20px;
+  width: fit-content;
 }
 
 .my-hand.my-turn {
+  box-shadow: 0 0 25px rgba(46, 204, 113, 0.9);
   border: 3px solid #2ecc71;
-  box-shadow: 0 -4px 20px rgba(46, 204, 113, 0.6);
 }
 
 .hand-cards {
@@ -199,6 +209,23 @@
   .hand-cards::-webkit-scrollbar {
     height: 4px;
   }
+}
+
+.game-board {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: grid;
+  grid-template-areas:
+    "top-info top-info top-info"
+    "left-player top-player right-player"
+    "left-player center right-player"
+    "my-hand my-hand my-hand";
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto 1fr 2fr auto;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Rubik', sans-serif;
 }
 
 .color-picker-overlay {
