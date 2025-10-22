@@ -1,0 +1,271 @@
+.intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.intro-overlay.fade-out {
+  animation: fadeOut 0.8s ease-out forwards;
+}
+
+.intro-content {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+/* Floating cards background */
+.floating-cards {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.card-float {
+  position: absolute;
+  font-size: 3em;
+  opacity: 0.2;
+  animation: float 3s ease-in-out infinite;
+}
+
+.card-float.red {
+  color: #e74c3c;
+  filter: drop-shadow(0 0 10px #e74c3c);
+}
+
+.card-float.blue {
+  color: #3498db;
+  filter: drop-shadow(0 0 10px #3498db);
+}
+
+.card-float.green {
+  color: #2ecc71;
+  filter: drop-shadow(0 0 10px #2ecc71);
+}
+
+.card-float.yellow {
+  color: #f39c12;
+  filter: drop-shadow(0 0 10px #f39c12);
+}
+
+.card-float:nth-child(1) {
+  top: 10%;
+  left: 10%;
+}
+
+.card-float:nth-child(2) {
+  top: 20%;
+  right: 15%;
+}
+
+.card-float:nth-child(3) {
+  bottom: 30%;
+  left: 20%;
+}
+
+.card-float:nth-child(4) {
+  bottom: 20%;
+  right: 25%;
+}
+
+.card-float:nth-child(5) {
+  top: 60%;
+  left: 15%;
+}
+
+.card-float:nth-child(6) {
+  top: 70%;
+  right: 20%;
+}
+
+/* Title section */
+.intro-title {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.intro-title.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.title-cards {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.card-icon {
+  font-size: 3em;
+  display: inline-block;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+}
+
+.card-icon.bounce {
+  animation: bounceIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.main-title {
+  font-size: 8em;
+  font-weight: 900;
+  color: white;
+  margin: 0;
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.1em;
+}
+
+.letter {
+  display: inline-block;
+  opacity: 0;
+  animation: letterPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Subtitle section */
+.intro-subtitle {
+  margin-top: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.intro-subtitle.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.subtitle-text {
+  font-size: 1.8em;
+  color: white;
+  margin: 0 0 20px 0;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.loading-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.loading-dots span {
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  animation: dotPulse 1.4s ease-in-out infinite;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.loading-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loading-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(20px) rotate(-5deg);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-180deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes letterPop {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 5em;
+  }
+
+  .card-icon {
+    font-size: 2em;
+  }
+
+  .subtitle-text {
+    font-size: 1.3em;
+  }
+
+  .card-float {
+    font-size: 2em;
+  }
+}

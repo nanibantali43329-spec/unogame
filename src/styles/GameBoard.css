@@ -1,0 +1,283 @@
+.game-board {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-info {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 15px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  min-width: 300px;
+}
+
+.game-message {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.game-stats {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.stat span:first-child {
+  opacity: 0.7;
+}
+
+.player-area {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.player-area.current-player {
+  border: 3px solid #f39c12;
+  box-shadow: 0 0 20px rgba(243, 156, 18, 0.6);
+}
+
+.player-area.bottom {
+  bottom: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.player-area.top {
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.player-area.left {
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.player-area.right {
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.player-info {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.player-name {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+.player-cards {
+  font-size: 14px;
+  color: #7f8c8d;
+}
+
+.player-hand-preview {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+
+.player-hand-preview .card-back {
+  width: 40px;
+  height: 60px;
+  border-width: 2px;
+}
+
+.player-hand-preview .card-back::before {
+  font-size: 20px;
+}
+
+.center-area {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.discard-pile {
+  animation: slideIn 0.3s ease-out;
+}
+
+.draw-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: rgba(52, 152, 219, 0.9);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.draw-button:hover:not(:disabled) {
+  transform: scale(1.05);
+  background: rgba(41, 128, 185, 1);
+}
+
+.draw-button:disabled {
+  background: rgba(149, 165, 166, 0.9);
+}
+
+.my-hand {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+  max-width: 90vw;
+  transition: all 0.3s ease;
+}
+
+.my-hand.my-turn {
+  border: 3px solid #2ecc71;
+  box-shadow: 0 -4px 20px rgba(46, 204, 113, 0.6);
+}
+
+.hand-cards {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 5px;
+}
+
+.hand-cards::-webkit-scrollbar {
+  height: 8px;
+}
+
+.hand-cards::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.hand-cards::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+.color-picker-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.color-picker {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  animation: slideIn 0.3s ease-out;
+}
+
+.color-picker h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c3e50;
+  font-size: 24px;
+}
+
+.color-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.color-button {
+  width: 120px;
+  height: 120px;
+  border: 4px solid white;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.color-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .player-area.left,
+  .player-area.right {
+    transform: none;
+  }
+
+  .player-area.left {
+    left: 10px;
+    top: 150px;
+  }
+
+  .player-area.right {
+    right: 10px;
+    top: 150px;
+  }
+
+  .hand-cards {
+    gap: 5px;
+  }
+
+  .uno-card {
+    width: 70px;
+    height: 105px;
+  }
+}
