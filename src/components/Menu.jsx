@@ -96,11 +96,12 @@ const Menu = ({ onCreateGame, onJoinGame, onFindMatch }) => {
         <div className="modal-overlay" onClick={() => setShowJoinModal(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <h2>Join Game</h2>
+            <p className="modal-hint">📋 Paste the FULL game code (including dashes)</p>
             <div className="input-group">
               <label>Game Code</label>
               <input
                 type="text"
-                placeholder="Enter game code"
+                placeholder="Example: -Oc9jPO1DsXrt"
                 value={gameCode}
                 onChange={(e) => setGameCode(e.target.value)}
                 autoFocus

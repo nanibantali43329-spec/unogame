@@ -3,6 +3,7 @@ import '../styles/Lobby.css';
 
 const Lobby = ({ game, userId, onReady, onStart, onLeave }) => {
   const [isReady, setIsReady] = useState(false);
+  const [copied, setCopied] = useState(false);
   const isHost = game.host === userId;
   const players = Object.entries(game.players || {});
   const allReady = players.length >= 2 && players.every(([_, player]) => player.ready);
@@ -19,14 +20,25 @@ const Lobby = ({ game, userId, onReady, onStart, onLeave }) => {
     }
   };
 
+  const handleCopyCode = () => {
+    navigator.clipboard.writeText(game.id);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <div className="lobby-container">
       <div className="lobby-card">
         <div className="lobby-header">
           <h1>🎴 UNO Game Lobby</h1>
           <div className="game-code">
-            <span>Game Code:</span>
-            <code>{game.id.substring(0, 8)}</code>
+            <span>Share this code to invite players:</span>
+            <div className="code-container">
+              <code>{game.id}</code>
+              <button className="copy-button" onClick={handleCopyCode}>
+                {copied ? '✅ Copied!' : '📋 Copy'}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -85,7 +97,8 @@ const Lobby = ({ game, userId, onReady, onStart, onLeave }) => {
         </div>
 
         <div className="lobby-info">
-          <p>📌 Share the game code with friends to join!</p>
+          <p>🌍 <strong>Global Multiplayer</strong> - Friends can join from anywhere!</p>
+          <p>📋 Click "Copy" button and share the FULL code with friends</p>
           <p>🎯 Need at least 2 players to start</p>
           <p>👥 Maximum 4 players</p>
         </div>
