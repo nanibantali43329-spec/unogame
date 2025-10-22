@@ -12,8 +12,10 @@ import {
   startGame,
   updateGameState,
   leaveGame,
-  subscribeToGame
+  subscribeToGame,
+  database
 } from './firebase';
+import { ref, update } from 'firebase/database';
 import { initializeGame } from './gameLogic';
 import './App.css';
 
@@ -140,6 +142,29 @@ function App() {
     }
   };
 
+  const handleBackToLobby = async () => {
+    try {
+      // Reset game to lobby state
+      const gameRef = ref(database, `games/${gameId}`);
+      await update(gameRef, {
+        status: 'waiting',
+        gameState: null
+      });
+      
+      // Reset all players to not ready
+      const playerIds = Object.keys(game.players);
+      for (const playerId of playerIds) {
+        await update(ref(database, `games/${gameId}/players/${playerId}`), {
+          ready: false,
+          handCount: 0
+        });
+      }
+    } catch (err) {
+      setError('Failed to return to lobby.');
+      console.error(err);
+    }
+  };
+
   if (showIntro) {
     return <Intro onComplete={() => setShowIntro(false)} />;
   }
@@ -195,6 +220,7 @@ function App() {
           game={game}
           userId={user.uid}
           onUpdateGame={handleUpdateGame}
+          onBackToLobby={handleBackToLobby}
         />
       )}
     </div>

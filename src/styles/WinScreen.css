@@ -1,0 +1,353 @@
+.win-screen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.confetti-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  animation: confettiFall linear forwards;
+  opacity: 0.8;
+}
+
+.win-content {
+  text-align: center;
+  animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+}
+
+.trophy-container {
+  position: relative;
+  margin-bottom: 40px;
+  display: inline-block;
+}
+
+.trophy {
+  font-size: 120px;
+  animation: trophyBounce 1s ease-in-out infinite;
+  display: inline-block;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+}
+
+.trophy-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shine 2s infinite;
+  border-radius: 50%;
+}
+
+.winner-announcement {
+  margin-bottom: 50px;
+}
+
+.winner-title {
+  font-size: 4em;
+  font-weight: 900;
+  color: white;
+  margin: 0 0 20px 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: slideDown 0.6s ease-out;
+  letter-spacing: 0.05em;
+}
+
+.winner-name-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: slideUp 0.8s ease-out;
+}
+
+.winner-name {
+  font-size: 3em;
+  font-weight: 800;
+  color: #f39c12;
+  text-shadow: 
+    0 0 20px rgba(243, 156, 18, 0.8),
+    0 4px 15px rgba(0, 0, 0, 0.3);
+  animation: glow 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+.winner-label {
+  font-size: 2.5em;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+}
+
+.floating-win-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.win-card {
+  font-size: 50px;
+  animation: floatCard 2s ease-in-out infinite;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+}
+
+.back-to-lobby-button {
+  background: white;
+  color: #667eea;
+  border: none;
+  padding: 18px 40px;
+  border-radius: 50px;
+  font-size: 1.3em;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.back-to-lobby-button:hover {
+  transform: scale(1.1) translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+}
+
+.back-to-lobby-button .button-icon {
+  font-size: 1.3em;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes trophyBounce {
+  0%, 100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 
+      0 0 20px rgba(243, 156, 18, 0.8),
+      0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    text-shadow: 
+      0 0 40px rgba(243, 156, 18, 1),
+      0 0 60px rgba(243, 156, 18, 0.6),
+      0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes floatCard {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(10deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes confettiFall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .trophy {
+    font-size: 100px;
+  }
+
+  .winner-title {
+    font-size: 3.5em;
+  }
+
+  .winner-name {
+    font-size: 2.5em;
+  }
+
+  .winner-label {
+    font-size: 2em;
+  }
+
+  .win-card {
+    font-size: 40px;
+  }
+
+  .back-to-lobby-button {
+    padding: 16px 35px;
+    font-size: 1.2em;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .win-content {
+    padding: 15px;
+  }
+
+  .trophy {
+    font-size: 80px;
+  }
+
+  .trophy-container {
+    margin-bottom: 30px;
+  }
+
+  .winner-announcement {
+    margin-bottom: 40px;
+  }
+
+  .winner-title {
+    font-size: 2.5em;
+  }
+
+  .winner-name {
+    font-size: 2em;
+  }
+
+  .winner-label {
+    font-size: 1.5em;
+  }
+
+  .floating-win-cards {
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .win-card {
+    font-size: 35px;
+  }
+
+  .back-to-lobby-button {
+    padding: 14px 30px;
+    font-size: 1.1em;
+    gap: 10px;
+  }
+
+  .confetti {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .trophy {
+    font-size: 60px;
+  }
+
+  .winner-title {
+    font-size: 2em;
+  }
+
+  .winner-name {
+    font-size: 1.5em;
+  }
+
+  .winner-label {
+    font-size: 1.2em;
+  }
+
+  .win-card {
+    font-size: 30px;
+  }
+
+  .floating-win-cards {
+    gap: 15px;
+  }
+
+  .back-to-lobby-button {
+    padding: 12px 25px;
+    font-size: 1em;
+  }
+}

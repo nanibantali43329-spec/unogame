@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
+import WinScreen from './WinScreen';
 import { playCard, drawCard, canPlayCard, COLORS } from '../gameLogic';
 import '../styles/GameBoard.css';
 
-const GameBoard = ({ game, userId, onUpdateGame }) => {
+const GameBoard = ({ game, userId, onUpdateGame, onBackToLobby }) => {
   const [selectedCard, setSelectedCard] = useState(null);
   const [showColorPicker, setShowColorPicker] = useState(false);
   const [message, setMessage] = useState('');
@@ -81,6 +82,12 @@ const GameBoard = ({ game, userId, onUpdateGame }) => {
     const relativeIndex = (index - myIndex + playerIds.length) % playerIds.length;
     return positions[relativeIndex] || 'bottom';
   };
+
+  // Show win screen if there's a winner
+  if (game.gameState.winner) {
+    const winnerName = game.players[game.gameState.winner]?.name || 'Unknown';
+    return <WinScreen winnerName={winnerName} onBackToLobby={onBackToLobby} />;
+  }
 
   return (
     <div className="game-board">

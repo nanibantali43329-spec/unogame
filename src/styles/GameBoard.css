@@ -181,17 +181,24 @@
 }
 
 .hand-cards::-webkit-scrollbar {
-  height: 8px;
+  height: 6px;
 }
 
 .hand-cards::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 .hand-cards::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
+  border-radius: 3px;
+}
+
+/* Mobile scrollbar */
+@media (max-width: 768px) {
+  .hand-cards::-webkit-scrollbar {
+    height: 4px;
+  }
 }
 
 .color-picker-overlay {
@@ -332,14 +339,16 @@
 
   .player-area.left {
     left: 5px;
-    top: 50%;
+    top: 45%;
     transform: translateY(-50%);
+    max-width: 45%;
   }
 
   .player-area.right {
     right: 5px;
-    top: 50%;
+    top: 45%;
     transform: translateY(-50%);
+    max-width: 45%;
   }
 
   .player-area.bottom {
@@ -395,20 +404,30 @@
 
   /* My hand at bottom */
   .my-hand {
-    bottom: 10px;
-    padding: 12px;
-    max-width: 95vw;
-    border-radius: 12px;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    max-width: 98vw;
+    border-radius: 10px;
+    width: auto;
   }
 
   .hand-cards {
-    gap: 6px;
-    padding: 2px;
+    gap: 4px;
+    padding: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-wrap: nowrap;
   }
 
   .hand-cards .uno-card {
-    width: 65px;
-    height: 97px;
+    width: 60px;
+    height: 90px;
+    flex-shrink: 0;
   }
 
   .hand-cards .card-corner {
@@ -487,16 +506,19 @@
   }
 
   .my-hand {
-    padding: 10px;
+    padding: 8px;
+    bottom: 3px;
+    max-width: 99vw;
   }
 
   .hand-cards {
-    gap: 4px;
+    gap: 3px;
   }
 
   .hand-cards .uno-card {
-    width: 55px;
-    height: 82px;
+    width: 50px;
+    height: 75px;
+    border-width: 3px;
   }
 
   .hand-cards .card-corner {
