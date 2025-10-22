@@ -256,28 +256,314 @@
   }
 }
 
+/* Tablet */
+@media (max-width: 1024px) {
+  .game-info {
+    min-width: 280px;
+    padding: 12px 25px;
+  }
+
+  .game-message {
+    font-size: 16px;
+  }
+
+  .game-stats {
+    font-size: 13px;
+  }
+
+  .player-area {
+    padding: 12px;
+  }
+
+  .player-hand-preview .card-back {
+    width: 35px;
+    height: 52px;
+  }
+
+  .my-hand {
+    max-width: 95vw;
+    padding: 15px;
+  }
+}
+
+/* Mobile Landscape & Portrait */
 @media (max-width: 768px) {
-  .player-area.left,
-  .player-area.right {
-    transform: none;
+  .game-board {
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile */
   }
 
-  .player-area.left {
-    left: 10px;
-    top: 150px;
+  .game-info {
+    top: 10px;
+    min-width: auto;
+    width: calc(100% - 20px);
+    max-width: 95%;
+    padding: 10px 15px;
   }
 
-  .player-area.right {
-    right: 10px;
-    top: 150px;
+  .game-message {
+    font-size: 14px;
+    margin-bottom: 8px;
   }
 
-  .hand-cards {
+  .game-stats {
+    flex-direction: column;
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  .stat {
     gap: 5px;
   }
 
-  .uno-card {
+  /* Reposition player areas for mobile */
+  .player-area {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .player-area.top {
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: 90%;
+  }
+
+  .player-area.left {
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .player-area.right {
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .player-area.bottom {
+    display: none; /* Hide bottom player area on mobile */
+  }
+
+  .player-info {
+    margin-bottom: 5px;
+  }
+
+  .player-name {
+    font-size: 13px;
+  }
+
+  .player-cards {
+    font-size: 11px;
+  }
+
+  .player-hand-preview {
+    gap: 3px;
+  }
+
+  .player-hand-preview .card-back {
+    width: 30px;
+    height: 45px;
+  }
+
+  .player-hand-preview .card-back::before {
+    font-size: 16px;
+  }
+
+  /* Center area adjustments */
+  .center-area {
+    gap: 15px;
+    flex-direction: column;
+  }
+
+  .discard-pile .uno-card {
+    width: 80px;
+    height: 120px;
+  }
+
+  .draw-button {
+    padding: 10px 15px;
+    gap: 5px;
+    font-size: 14px;
+  }
+
+  .card-back.deck-icon {
+    width: 60px;
+    height: 90px;
+  }
+
+  /* My hand at bottom */
+  .my-hand {
+    bottom: 10px;
+    padding: 12px;
+    max-width: 95vw;
+    border-radius: 12px;
+  }
+
+  .hand-cards {
+    gap: 6px;
+    padding: 2px;
+  }
+
+  .hand-cards .uno-card {
+    width: 65px;
+    height: 97px;
+  }
+
+  .hand-cards .card-corner {
+    font-size: 14px;
+  }
+
+  .hand-cards .card-center {
+    font-size: 36px;
+  }
+
+  /* Color picker modal */
+  .color-picker {
+    padding: 20px;
+  }
+
+  .color-picker h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .color-options {
+    gap: 10px;
+  }
+
+  .color-button {
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .game-info {
+    padding: 8px 12px;
+  }
+
+  .game-message {
+    font-size: 13px;
+  }
+
+  .game-stats {
+    font-size: 11px;
+  }
+
+  .player-area {
+    padding: 6px 8px;
+  }
+
+  .player-name {
+    font-size: 12px;
+  }
+
+  .player-cards {
+    font-size: 10px;
+  }
+
+  .player-hand-preview .card-back {
+    width: 25px;
+    height: 37px;
+  }
+
+  .discard-pile .uno-card {
     width: 70px;
     height: 105px;
+  }
+
+  .draw-button {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .card-back.deck-icon {
+    width: 50px;
+    height: 75px;
+  }
+
+  .my-hand {
+    padding: 10px;
+  }
+
+  .hand-cards {
+    gap: 4px;
+  }
+
+  .hand-cards .uno-card {
+    width: 55px;
+    height: 82px;
+  }
+
+  .hand-cards .card-corner {
+    font-size: 12px;
+    top: 5px;
+    left: 5px;
+  }
+
+  .hand-cards .card-corner.bottom-right {
+    bottom: 5px;
+    right: 5px;
+  }
+
+  .hand-cards .card-center {
+    font-size: 28px;
+  }
+
+  .color-picker {
+    padding: 15px;
+  }
+
+  .color-picker h3 {
+    font-size: 18px;
+  }
+
+  .color-options {
+    gap: 8px;
+  }
+
+  .color-button {
+    width: 80px;
+    height: 80px;
+    font-size: 14px;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+  .game-info {
+    top: 5px;
+    padding: 8px 15px;
+  }
+
+  .game-message {
+    font-size: 12px;
+  }
+
+  .player-area.top {
+    top: 50px;
+  }
+
+  .center-area {
+    gap: 10px;
+  }
+
+  .discard-pile .uno-card {
+    width: 60px;
+    height: 90px;
+  }
+
+  .my-hand {
+    bottom: 5px;
+    padding: 8px;
+  }
+
+  .hand-cards .uno-card {
+    width: 50px;
+    height: 75px;
   }
 }
