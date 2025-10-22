@@ -298,57 +298,66 @@
   .game-board {
     height: 100vh;
     height: 100dvh; /* Dynamic viewport height for mobile */
+    overflow: hidden;
   }
 
   .game-info {
-    top: 10px;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
     min-width: auto;
-    width: calc(100% - 20px);
-    max-width: 95%;
-    padding: 10px 15px;
+    width: auto;
+    max-width: 90%;
+    padding: 6px 12px;
+    border-radius: 8px;
   }
 
   .game-message {
-    font-size: 14px;
-    margin-bottom: 8px;
+    font-size: 12px;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .game-stats {
-    flex-direction: column;
-    gap: 8px;
-    font-size: 12px;
+    flex-direction: row;
+    gap: 12px;
+    font-size: 11px;
+    justify-content: center;
   }
 
   .stat {
-    gap: 5px;
+    gap: 4px;
   }
 
   /* Reposition player areas for mobile */
   .player-area {
-    padding: 8px 10px;
-    font-size: 12px;
+    padding: 5px 8px;
+    font-size: 11px;
+    border-radius: 8px;
   }
 
   .player-area.top {
-    top: 80px;
+    top: 55px;
     left: 50%;
     transform: translateX(-50%);
     width: auto;
-    max-width: 90%;
+    max-width: 70%;
   }
 
   .player-area.left {
     left: 5px;
-    top: 45%;
-    transform: translateY(-50%);
-    max-width: 45%;
+    top: 25%;
+    transform: none;
+    max-width: 35%;
   }
 
   .player-area.right {
     right: 5px;
-    top: 45%;
-    transform: translateY(-50%);
-    max-width: 45%;
+    top: 25%;
+    transform: none;
+    max-width: 35%;
   }
 
   .player-area.bottom {
@@ -360,61 +369,66 @@
   }
 
   .player-name {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .player-cards {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .player-hand-preview {
-    gap: 3px;
+    gap: 2px;
+    flex-wrap: wrap;
+    max-width: 100%;
   }
 
   .player-hand-preview .card-back {
-    width: 30px;
-    height: 45px;
+    width: 22px;
+    height: 33px;
   }
 
   .player-hand-preview .card-back::before {
-    font-size: 16px;
+    font-size: 12px;
   }
 
   /* Center area adjustments */
   .center-area {
     gap: 15px;
-    flex-direction: column;
+    flex-direction: row;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .discard-pile .uno-card {
-    width: 80px;
-    height: 120px;
+    width: 70px;
+    height: 105px;
   }
 
   .draw-button {
-    padding: 10px 15px;
-    gap: 5px;
-    font-size: 14px;
+    padding: 8px 12px;
+    gap: 4px;
+    font-size: 12px;
+    flex-direction: column;
   }
 
   .card-back.deck-icon {
-    width: 60px;
-    height: 90px;
+    width: 50px;
+    height: 75px;
   }
 
   /* My hand at bottom */
   .my-hand {
-    bottom: 5px;
+    bottom: 3px;
     left: 50%;
     transform: translateX(-50%);
-    padding: 10px;
-    max-width: 98vw;
-    border-radius: 10px;
+    padding: 6px;
+    max-width: 99vw;
+    border-radius: 8px;
     width: auto;
   }
 
   .hand-cards {
-    gap: 4px;
+    gap: 0;
     padding: 0;
     overflow-x: auto;
     overflow-y: hidden;
@@ -425,17 +439,28 @@
   }
 
   .hand-cards .uno-card {
-    width: 60px;
-    height: 90px;
+    width: 55px;
+    height: 82px;
     flex-shrink: 0;
+    margin-right: -15px;
+  }
+
+  .hand-cards .uno-card:last-child {
+    margin-right: 0;
+  }
+
+  .hand-cards .uno-card:hover,
+  .hand-cards .uno-card.playable {
+    margin-right: -15px;
+    transform: translateY(-10px);
   }
 
   .hand-cards .card-corner {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .hand-cards .card-center {
-    font-size: 36px;
+    font-size: 32px;
   }
 
   /* Color picker modal */
@@ -462,78 +487,94 @@
 /* Small Mobile */
 @media (max-width: 480px) {
   .game-info {
-    padding: 8px 12px;
+    padding: 5px 10px;
   }
 
   .game-message {
-    font-size: 13px;
-  }
-
-  .game-stats {
     font-size: 11px;
   }
 
+  .game-stats {
+    font-size: 10px;
+    gap: 8px;
+  }
+
   .player-area {
-    padding: 6px 8px;
+    padding: 4px 6px;
+  }
+
+  .player-area.top {
+    top: 50px;
+    max-width: 80%;
+  }
+
+  .player-area.left,
+  .player-area.right {
+    top: 22%;
+    max-width: 32%;
   }
 
   .player-name {
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .player-cards {
-    font-size: 10px;
+    font-size: 9px;
   }
 
   .player-hand-preview .card-back {
-    width: 25px;
-    height: 37px;
+    width: 20px;
+    height: 30px;
+  }
+
+  .player-hand-preview .card-back::before {
+    font-size: 10px;
   }
 
   .discard-pile .uno-card {
-    width: 70px;
-    height: 105px;
+    width: 60px;
+    height: 90px;
   }
 
   .draw-button {
-    padding: 8px 12px;
-    font-size: 13px;
+    padding: 6px 10px;
+    font-size: 11px;
   }
 
   .card-back.deck-icon {
-    width: 50px;
-    height: 75px;
+    width: 45px;
+    height: 67px;
   }
 
   .my-hand {
-    padding: 8px;
-    bottom: 3px;
+    padding: 5px;
+    bottom: 2px;
     max-width: 99vw;
   }
 
-  .hand-cards {
-    gap: 3px;
+  .hand-cards .uno-card {
+    width: 48px;
+    height: 72px;
+    margin-right: -12px;
   }
 
-  .hand-cards .uno-card {
-    width: 50px;
-    height: 75px;
-    border-width: 3px;
+  .hand-cards .uno-card:last-child {
+    margin-right: 0;
   }
 
   .hand-cards .card-corner {
-    font-size: 12px;
-    top: 5px;
-    left: 5px;
+    font-size: 11px;
+    top: 4px;
+    left: 4px;
   }
 
   .hand-cards .card-corner.bottom-right {
-    bottom: 5px;
-    right: 5px;
+    bottom: 4px;
+    right: 4px;
   }
 
   .hand-cards .card-center {
-    font-size: 28px;
+    font-size: 26px;
   }
 
   .color-picker {
